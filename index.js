@@ -1,9 +1,9 @@
 // Including the necessary packages for this repository
 const inquirer = require('inquirer');
 const fs = require('fs');
-const path = require('path');
+
 // Including JS file that runs the SVG file generation method
-const generateLogo = require('./lib/shapes');
+const generateLogo = require('./utils.js');
 // Creating an array of questions for user input
 const questions = [
     {
@@ -29,21 +29,16 @@ const questions = [
     },
 ];
 
-// Creating a function to write an SVG file
-function writeToFile(fileName, data) {
-    return fs.writeFileSync(path.join(process.cwd(),fileName),data)
-};
-
 // Creating a function to initialize application
 function init() {
     inquirer
     .prompt(questions)
     // The user input data is passed into the generative function
     .then((data) => {
-        writeToFile('Generated_logo.svg', generateLogo({
+        fs.writeFileSync('Generated_logo.svg', generateLogo({
             ...data
         }))
-    })
+    });
 }
 
 // Function call to initialize app
