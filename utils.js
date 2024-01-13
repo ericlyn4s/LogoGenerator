@@ -1,19 +1,18 @@
-const{Circle, Triangle, Square} = require('./lib/shapes');
+const{Circle, Triangle, Square} = require('./lib/shapes.js');
 
-function generateLogo(input) {
+function generateLogo(data) {
 
 {
-    let shape = this.shape;
-    if (input === 'Circle') {
-        shape = Circle.render();
-    } else if (input === 'Triangle') {
-        shape = Triangle.render();
-    } /*else {
-        
-        shape = Square.render();
-
+    let shape = data.shape;
+    if (data.shape === "Circle") {
+        shape = new Circle().render(data);
+    } else if (data.shape === "Triangle") {
+        shape = new Triangle().render(data);
+    } else {
+        shape = new Square().render(data);
     } 
-    */
+    console.log('Generated logo.svg');
+    return shape;
 };
 
 };

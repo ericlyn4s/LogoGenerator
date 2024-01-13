@@ -10,12 +10,14 @@ const questions = [
         type: 'input',
         name: 'text',
         message: "What's your logo name? (Maximum 3 characters)",
+        validate: validateLength
     },
     {
         text: 'input',
         name: 'textColor',
         message: "What color would you like your text to be?",
     },
+    // Limiting shape choices to three - circle, triangle or square
     {
         type: 'list',
         name: 'shape',
@@ -35,11 +37,16 @@ function init() {
     .prompt(questions)
     // The user input data is passed into the generative function
     .then((data) => {
-        fs.writeFileSync('Generated_logo.svg', generateLogo({
+        fs.writeFileSync('logo.svg', generateLogo({
             ...data
         }))
     })
 }
+
+// Creating a function to validate the text input for the logo doesn't exceed 3 characters
+function validateLength(answer) {
+    return answer.length <= 3;
+  }
 
 // Function call to initialize app
 init();
