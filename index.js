@@ -38,7 +38,7 @@ function init() {
         fs.writeFileSync('Generated_logo.svg', generateLogo({
             ...data
         }))
-    });
+    })
 }
 
 // Function call to initialize app

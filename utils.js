@@ -1,14 +1,21 @@
 const{Circle, Triangle, Square} = require('./lib/shapes');
 
 function generateLogo(input) {
-    let shape;
+
+{
+    let shape = this.shape;
     if (input === 'Circle') {
         shape = Circle.render();
     } else if (input === 'Triangle') {
         shape = Triangle.render();
-    } /* else {
+    } /*else {
+        
         shape = Square.render();
-    } */
+
+    } 
+    */
+};
+
 };
 
 module.exports = generateLogo;
