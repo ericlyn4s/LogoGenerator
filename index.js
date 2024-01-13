@@ -1,8 +1,8 @@
-// Including the necessary packages for this repository
+// Include the necessary packages for this repository
 const inquirer = require('inquirer');
 const fs = require('fs');
 
-// Including JS file that runs the SVG file generation method
+// Include the JS file that runs the SVG file generation method
 const generateLogo = require('./utils.js');
 // Creating an array of questions for user input
 const questions = [
@@ -10,6 +10,7 @@ const questions = [
         type: 'input',
         name: 'text',
         message: "What's your logo name? (Maximum 3 characters)",
+        // Add a validation function that limits user input to 3 characters
         validate: validateLength
     },
     {
@@ -17,7 +18,7 @@ const questions = [
         name: 'textColor',
         message: "What color would you like your text to be?",
     },
-    // Limiting shape choices to three - circle, triangle or square
+    // Limit shape choices to three - circle, triangle or square
     {
         type: 'list',
         name: 'shape',
@@ -31,7 +32,7 @@ const questions = [
     },
 ];
 
-// Creating a function to initialize application
+// Create a function to initialize application
 function init() {
     inquirer
     .prompt(questions)
@@ -43,7 +44,7 @@ function init() {
     })
 }
 
-// Creating a function to validate the text input for the logo doesn't exceed 3 characters
+// Create a function to validate the text input for the logo doesn't exceed 3 characters
 function validateLength(answer) {
     return answer.length <= 3;
   }
